@@ -1,0 +1,46 @@
+.tag-block {
+    width: 400px;
+    margin: 20px auto;
+}
+
+.tag-block__result {
+    width: 400px;
+    background-color: aliceblue;
+    padding: 5px;
+    cursor: text;
+}
+
+.result__input {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    margin: 2px;
+    background-color: aliceblue;
+}
+
+.tags__list {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+.remove-tag-btn {
+    cursor: pointer;
+}
+
+.tags__list-item {
+    display: inline-block;
+    background-color: cadetblue;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin: 2px;
+    cursor: default;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="angular.js"></script>
+    <script src="lodash.js"></script>
+    <script src="angular-elastic-input.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <script src="blocks/app.js"></script>
+    <script src="blocks/tag-inspector/tag-inspector-app.js"></script>
+    <script src="blocks/tag-inspector/tag-inspector-directive.js"></script>
+    <script src="blocks/tag-inspector/selected-tags/selected-tags-directive.js"></script>
+
+    <script src="blocks/live-input-result/resultApp.js"></script>
+
+    <link rel="stylesheet" href="css.css">
+</head>
+<body ng-controller="tagController">
+    <tag-inspector autocompleted-list="autocompletedList" model="model"></tag-inspector>
+    {{model}}
+
+</body>
+</html>
