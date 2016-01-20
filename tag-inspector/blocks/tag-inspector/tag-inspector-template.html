@@ -1,7 +1,7 @@
 <div class="tag-block__result" ng-click="focus()">
     <selected-tags model="model"></selected-tags>
 
-    <input pu-elastic-input focus-input="focus" ng-model="inputTag" ng-keypress="addInputKey($event)" class="result__input" type="text">
+    <input pu-elastic-input ng-model="inputTag" ng-keypress="addInputKey($event)" class="result__input" type="text">
 </div>
 
-<live-result-list input-tag="inputTag" select-item="selectItem" autocompleted-list="autocompletedList"></live-result-list>
+<live-result-list ng-if="autoComplete" input-tag="inputTag" select-item="$parent.selectItem" autocompleted-list="autocompletedList" ></live-result-list>

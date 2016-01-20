@@ -5,19 +5,59 @@ angular.module('tagInspectorApp')
             restrict: 'E',
             scope:{
                 model: '=',
-                autocompletedList: '='
+                autocompletedList: '=',
+                config: '='
             },
             link: function($scope, element, attrs){
 
                 $scope.inputTag = '';
-
                 $scope.selectItem = '';
 
-                $scope.$watch('selectItem',function(newValue){
-                    if (newValue) {
-                        $scope.model.push(newValue);
-                        $scope.inputTag = '';
+                var config = {
+                    customTags: false,
+                    autoComplete: true,
+                    onlyModelTags: true
+                };
+
+                function addTag(tag){
+
+                    if (!$scope.onlyModelTags){
+
+                        if ($scope.customTags) {
+                            $scope.model.push(tag);
+                            $scope.inputTag = '';
+                        } else {
+                            _.each($scope.autocompletedList, function (value) {
+
+                                if (value === tag) {
+                                    $scope.model.push(tag);
+                                    $scope.inputTag = '';
+                                }
+                            })
+                        }
                     }
+                }
+
+                if (!$scope.config.customTags) {
+                    $scope.customTags = $scope.config.customTags;
+                } else {
+                    $scope.customTags = config.customTags;
+                }
+
+                if (!$scope.config.autoComplete) {
+                    $scope.autoComplete = $scope.config.autoComplete;
+                } else {
+                    $scope.autoComplete = config.autoComplete;
+                }
+
+                if (!$scope.config.onlyModelTags) {
+                    $scope.onlyModelTags = $scope.config.onlyModelTags;
+                } else {
+                    $scope.onlyModelTags = config.onlyModelTags;
+                }
+
+                $scope.$watch('selectItem',function(newValue){
+                    addTag(newValue);
                 });
 
                 $scope.$watch('inputTag', function (newValue) {
@@ -26,16 +66,12 @@ angular.module('tagInspectorApp')
 
                 $scope.addInputKey = function(keyEvent) {
                     if (keyEvent.which === 13) {
-
-                        if ($scope.inputTag.length) {
-                            $scope.model.push($scope.inputTag);
-                            $scope.inputTag = '';
-                        }
+                        addTag($scope.inputTag);
                     }
                 };
 
                 $scope.focus = function(){
-                    $rootScope.$broadcast('focusInput', true);
+                   element[0].querySelector('input').focus();
                 };
 
                 element.on('click', function(e) {
@@ -44,10 +80,7 @@ angular.module('tagInspectorApp')
 
                 var addInputClick = function() {
                     $scope.$apply(function() {
-                        if ($scope.inputTag.length) {
-                            $scope.model.push($scope.inputTag);
-                            $scope.inputTag = '';
-                        }
+                        addTag($scope.inputTag);
                     });
                 };
 
@@ -56,21 +89,6 @@ angular.module('tagInspectorApp')
                 $scope.$on('$destroy', function() {
                     $document.off('click', addInputClick);
                 });
-            }
-        }
-    })
-    .directive('focusInput', function(){
-        return {
-            scope: {
-
-            },
-            link: function ($scope, element) {
-                $scope.$on('focusInput', function (event, data) {
-
-                    if (data === true) {
-                        element[0].focus();
-                    }
-                })
             }
         }
     });
