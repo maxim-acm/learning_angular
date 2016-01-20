@@ -1,25 +1,29 @@
-angular.module('resultApp',[])
-    .directive('liveResultList', function ($rootScope) {
+angular.module('autocompleteList',[])
+    .directive('liveResultList', function () {
         return {
             restrict: "E",
-            templateUrl: 'blocks/live-input-result/live-result-list-template.html',
+            templateUrl: 'blocks/tag-inspector/live-input-result/live-result-list-template.html',
             scope: {
-                autocompletedList: '='
+                autocompletedList: '=',
+                inputTag: '=',
+                selectItem: '='
             },
             link: function($scope){
 
                 $scope.matchesWords = [];
 
-                $scope.$on('inputValue', function (event, data) {
-
+                $scope.$watch('inputTag', function (data) {
                     if (data.length === 0) {
                         removeMatches();
-                    }
-
-                    else {
+                    } else {
                         sort($scope.autocompletedList, data);
                     }
                 });
+
+                $scope.addItem = function (item) {
+                    $scope.selectItem = item;
+                    removeMatches();
+                };
 
                 function removeMatches() {
                     $scope.matchedWords = [];
@@ -43,11 +47,6 @@ angular.module('resultApp',[])
                         return flat.concat(current);
                     }, []);
                 }
-
-                $scope.sendItem = function (item) {
-                    $rootScope.$broadcast('selectItem', item);
-                }
-
             }
         }
     });

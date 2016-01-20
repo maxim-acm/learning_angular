@@ -13,13 +13,14 @@
     <script src="blocks/tag-inspector/tag-inspector-directive.js"></script>
     <script src="blocks/tag-inspector/selected-tags/selected-tags-directive.js"></script>
 
-    <script src="blocks/live-input-result/resultApp.js"></script>
+    <script src="blocks/tag-inspector/live-input-result/autocompleteList.js"></script>
 
     <link rel="stylesheet" href="css.css">
 </head>
 <body ng-controller="tagController">
-    <tag-inspector autocompleted-list="autocompletedList" model="model"></tag-inspector>
-    {{model}}
-
+    <div class="tag-block">
+        <tag-inspector autocompleted-list="autocompletedList" model="model"></tag-inspector>
+        {{model}}
+    </div>
 </body>
 </html>

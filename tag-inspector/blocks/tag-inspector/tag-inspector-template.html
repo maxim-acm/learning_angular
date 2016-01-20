@@ -1,12 +1,7 @@
-<div class="tag-block">
-    <div class="tag-block__result" ng-click="focus()">
-        <selected-tags model="model"></selected-tags>
+<div class="tag-block__result" ng-click="focus()">
+    <selected-tags model="model"></selected-tags>
 
-        <input pu-elastic-input focus-input="focus" ng-model="inputTag" ng-keypress="addInputTag($event)" class="result__input" type="text">
-    </div>
-
-    <div class="tag-block__list">
-        <live-result-list autocompleted-list="autocompletedList"></live-result-list>
-    </div>
-
+    <input pu-elastic-input focus-input="focus" ng-model="inputTag" ng-keypress="addInputKey($event)" class="result__input" type="text">
 </div>
+
+<live-result-list input-tag="inputTag" select-item="selectItem" autocompleted-list="autocompletedList"></live-result-list>

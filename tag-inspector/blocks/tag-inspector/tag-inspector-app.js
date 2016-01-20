@@ -1,1 +1,1 @@
-angular.module('tagApp', ['puElasticInput', 'resultApp']);
+angular.module('tagInspectorApp', ['puElasticInput', 'autocompleteList']);

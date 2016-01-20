@@ -1,4 +1,4 @@
-angular.module('tagApp')
+angular.module('tagInspectorApp')
     .directive('selectedTags', function () {
         return {
             restrict: 'E',
