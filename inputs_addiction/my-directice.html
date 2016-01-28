@@ -1,0 +1,8 @@
+<input ng-model="local.items.checkbox.value" type="checkbox"/>
+
+<select ng-show="local.itemsVisibility.select"
+        ng-options="option.label for option in local.items.select.options track by option.value"
+        ng-model="local.selectedOption"
+        ></select>
+
+<textarea ng-show="local.itemsVisibility.textarea"></textarea>
