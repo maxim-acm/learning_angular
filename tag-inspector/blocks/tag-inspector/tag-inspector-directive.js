@@ -14,7 +14,7 @@ angular.module('tagInspectorApp')
                 $scope.selectItem = '';
 
                 var config = {
-                    customTags: false,
+                    customTags: true,
                     autoComplete: true,
                     onlyModelTags: true
                 };

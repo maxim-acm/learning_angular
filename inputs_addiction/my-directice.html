@@ -1,8 +1,13 @@
 <input ng-model="local.items.checkbox.value" type="checkbox"/>
 
-<select ng-show="local.itemsVisibility.select"
+<select ng-show="local.items.checkbox.value"
         ng-options="option.label for option in local.items.select.options track by option.value"
-        ng-model="local.selectedOption"
+        ng-model="local.items.select.selectedOption"
         ></select>
 
-<textarea ng-show="local.itemsVisibility.textarea"></textarea>
+<textarea ng-show="local.items.select.selectedOption.value && local.items.checkbox.value" ng-model="local.items.textarea.value">{{local.items.textarea.value}}</textarea>
+
+
+<p>{{value}}</p>
+
+<p>{{local.items.textarea.value}}</p>
